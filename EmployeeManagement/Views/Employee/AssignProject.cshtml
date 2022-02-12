@@ -1,0 +1,37 @@
+﻿@model ProjectViewModel
+
+
+<form method="post" asp-action="AssignProject" asp-controller="Employee">
+    <div style="width:400px;background-color:cadetblue;padding:40px">
+
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="@Model.project.ProjectTitle">Project Title:</label>
+            <input asp-for="@Model.project.ProjectTitle" />
+        </div>
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="@Model.project.ExpiringDate">Expring Date:</label>
+            <input asp-for="@Model.project.ExpiringDate" />
+        </div>
+
+      
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="@Model.project.EmployeeName">Employee Name:</label>
+            <select asp-for="@Model.project.EmployeeName">
+                @foreach (var item in Model.employees)
+            {
+                    <option>@item.EmployeeName</option>
+            }
+            </select>
+        </div>
+
+        
+        <div>
+            <input type="submit" value="Assign Project" />
+        </div>
+
+    </div>
+
+</form>

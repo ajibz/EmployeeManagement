@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Employees>
+@{ 
+    ViewData["Title"] = "All Employees";
+    int count = 0;
+}
+
+<style>
+   
+  
+</style>
+
+<div>
+    <table class="table table-bordered bg-info">
+        <thead>
+            <tr>
+                <td>S/N</td>
+                <td>Name</td>
+                <td>Department</td>
+                <td>Sex</td>
+                <td>Age</td>
+                <td>Marital Status</td>
+                <td>Salary</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Employees employees in Model)
+            {
+            <tr>
+                <td>@(count+1)</td>
+                <td>@employees.EmployeeName</td>
+                <td>@employees.Department</td>
+                <td>@employees.Sex</td>
+                <td>@employees.Age</td>
+                <td>@employees.MaritalStatus</td>
+                <td>@employees.Salary</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,50 @@
+﻿@model Employees
+
+
+<form method="post" asp-action="AddEmployee" asp-controller="Employee">
+    <div style="width:400px;background-color:cadetblue;padding:40px">
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="EmployeeName">Employee Name:</label>
+            <input asp-for="EmployeeName" />
+        </div>
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="Department">Department:</label>
+            <select asp-for="Department">
+                <option>Marketing</option>
+                <option>IT</option>
+                <option>Finance</option>
+                <option>Catering</option>
+            </select>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="Age">Age:</label>
+            <input asp-for="Age" />
+        </div>
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="Sex">Sex:</label>
+            <select asp-for="Sex">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="Salary">Salary:</label>
+            <input asp-for="Salary" />
+        </div>
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="MaritalStatus">Marital Status:</label>
+            <select asp-for="MaritalStatus">
+                <option>Married</option>
+                <option>Single</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Add Employee" />
+        </div>
+
+    </div>
+
+</form>

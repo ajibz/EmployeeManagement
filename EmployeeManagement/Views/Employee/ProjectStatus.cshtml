@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Project>
+@{
+    ViewData["Title"] = "All Employees";
+    int count = 0;
+}
+
+<style>
+</style>
+
+<div>
+    <table class="table table-bordered bg-info">
+       
+        <thead>
+            <tr>
+                <td>S/Nn</td>
+                <td>Project Title</td>
+                <td>Expiring Date</td>
+                <td>Employee Name</td>
+                <td>Submission Status</td>
+                <td>Remark</td>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Project project in Model)
+            {
+            <tr>
+                <td>@(count+1)</td>
+                <td>@project.ProjectTitle</td>
+                <td>@project.ExpiringDate</td>
+                <td>@project.EmployeeName</td>
+                <td>@project.submitted</td>
+                <td>
+                    <div style="display:flex;justify-content:space-evenly">
+                        <a asp-controller="Employee" asp-action="EditProject" asp-route-id="@project.Id" class="text-danger font-weight-bold text-center">Edit</a>
+                        <form asp-controller="Employee" asp-action="DeleteProject" asp-route-id="@project.Id">
+                            <input type="submit" value="Delete" style="border-radius:7px"/>
+                        </form>
+                    </div>
+                </td>
+               
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
