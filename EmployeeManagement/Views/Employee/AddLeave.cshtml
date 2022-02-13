@@ -1,0 +1,42 @@
+﻿@model ViewModel
+
+
+<form method="post" asp-action="AddLeave" asp-controller="Employee">
+    <div style="width:400px;background-color:cadetblue;padding:40px">
+
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="@Model.leave.Reason">Reason :</label>
+            <input asp-for="@Model.leave.Reason" />
+        </div>
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="@Model.leave.FromDate">Start Date:</label>
+            <input asp-for="@Model.leave.FromDate" />
+        </div>
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="@Model.leave.ToDate">End Date:</label>
+            <input asp-for="@Model.leave.ToDate" />
+        </div>
+
+
+
+        <div style="display:flex;justify-content:space-between">
+            <label asp-for="@Model.leave.EmployeeName">Employee Name:</label>
+            <select asp-for="@Model.leave.EmployeeName">
+                @foreach (var item in Model.employees)
+                {
+                    <option>@item.EmployeeName</option>
+                }
+            </select>
+        </div>
+
+
+        <div>
+            <input type="submit" value="Apply" />
+        </div>
+
+    </div>
+
+</form>

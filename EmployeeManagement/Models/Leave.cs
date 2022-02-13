@@ -10,7 +10,7 @@ namespace EmployeeManagement.Models
         [Key]
         public int Id { get; set; }
         public int EmployeeId { get; set; }
-        public int EmployeeName { get; set; }
+        public string EmployeeName { get; set; }
         public bool Approved { get; set; }
         public string Reason { get; set; }
         public DateTime FromDate { get; set; }

@@ -49,7 +49,7 @@ namespace EmployeeManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> AssignProject()
         {
-            ProjectViewModel projectViewModel = new ProjectViewModel();
+            ViewModel projectViewModel = new ViewModel();
             projectViewModel.employees = await _management.GetAllEmployees();
 
 
@@ -82,7 +82,7 @@ namespace EmployeeManagement.Controllers
         [HttpGet]
         public async Task<IActionResult> EditProject(int id)
         {
-            ProjectViewModel projectViewModel = new ProjectViewModel();
+            ViewModel projectViewModel = new ViewModel();
             projectViewModel.project = await _management.GetSingleProject(id);
             projectViewModel.employees = await _management.GetAllEmployees();
 
@@ -111,6 +111,54 @@ namespace EmployeeManagement.Controllers
            
                 await _management.DeleteProject(id);
                 return RedirectToAction("ProjectStatus");
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddLeave()
+        {
+            ViewModel viewModel = new ViewModel();
+            viewModel.employees = await _management.GetAllEmployees();
+
+            return View(viewModel);
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddLeave(Leave leave)
+        {
+
+            await _management.AddLeave(leave);
+            return RedirectToAction("AllLeaves");
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllLeaves()
+        {
+            ViewModel viewModel = new ViewModel();
+            viewModel.GetAllLeave = await _management.GetAllLeave();
+            return View(viewModel);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LeaveApproved(int id)
+        {
+            Leave leave = await _management.GetSingleLeave(id);
+            leave.Approved = true;
+
+
+
+            await _management.LeaveApproved(leave,id);
+            return RedirectToAction("AllLeaves");
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> LeaveDisApproved(int id)
+        {
+
+            await _management.LeaveDisApproved(id);
+            return RedirectToAction("AllLeaves");
 
         }
 

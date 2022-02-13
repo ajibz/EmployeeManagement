@@ -1,0 +1,57 @@
+﻿@model ViewModel
+@{
+    ViewData["Title"] = "Employee Leave";
+    int count = 0;
+}
+
+<style>
+</style>
+
+<div>
+    <table class="table table-bordered bg-info">
+
+        <thead>
+            <tr>
+                <td>S/N</td>
+                <td>Employee Name</td>
+                <td>Reason</td>
+                <td>Start Date</td>
+                <td>End Date</td>
+                <td>Approval</td>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model.GetAllLeave.Count() > 0)
+            {
+            @foreach (Leave leave in Model.GetAllLeave)
+            {
+            <tr>
+                <td>@(++count)</td>
+                <td>@leave.EmployeeName</td>
+                <td>@leave.Reason</td>
+                <td>@leave.FromDate</td>
+                <td>@leave.ToDate</td>
+                <td>@leave.Approved</td>
+
+                <td>
+                    <div style="display:flex;justify-content:space-evenly">
+                        <form asp-controller="Employee" asp-action="LeaveApproved" asp-route-id="@leave.Id">
+                            <input type="submit" value="Approve" style="border-radius:7px" />
+                        </form>
+                        <form asp-controller="Employee" asp-action="LeaveDisApproved" asp-route-id="@leave.Id">
+                            <input type="submit" value="DisApprove" style="border-radius:7px" />
+                        </form>
+                    </div>
+                </td>
+
+            </tr>
+            }
+            }
+        </tbody>
+    </table>
+
+</div>
+
+

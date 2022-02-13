@@ -26,7 +26,7 @@
             @foreach (Project project in Model)
             {
             <tr>
-                <td>@(count+1)</td>
+                <td>@(++count)</td>
                 <td>@project.ProjectTitle</td>
                 <td>@project.ExpiringDate</td>
                 <td>@project.EmployeeName</td>

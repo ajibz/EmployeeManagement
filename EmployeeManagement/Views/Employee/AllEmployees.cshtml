@@ -27,7 +27,7 @@
             @foreach (Employees employees in Model)
             {
             <tr>
-                <td>@(count+1)</td>
+                <td>@(++count)</td>
                 <td>@employees.EmployeeName</td>
                 <td>@employees.Department</td>
                 <td>@employees.Sex</td>

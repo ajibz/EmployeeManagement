@@ -61,6 +61,11 @@ namespace EmployeeManagement.Data
            return  _applicationDbContext.employees.ToListAsync();
         }
 
+        public Task<List<Leave>> GetAllLeave()
+        {
+            return _applicationDbContext.leaves.ToListAsync();
+        }
+
         public Task<List<Project>> GetAllProjects()
         {
             return _applicationDbContext.projects.ToListAsync();
@@ -71,9 +76,28 @@ namespace EmployeeManagement.Data
              return  await _applicationDbContext.employees.FirstOrDefaultAsync(m => m.EmployeeId == id);
         }
 
+        public async Task<Leave> GetSingleLeave(int id)
+        {
+            return await _applicationDbContext.leaves.FirstOrDefaultAsync(m => m.Id == id);
+        }
+
         public async  Task<Project> GetSingleProject(int id)
         {
            return await _applicationDbContext.projects.FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public async  Task LeaveApproved(Leave leave,int id)
+        {
+           
+            _applicationDbContext.Update(leave);
+
+            await _applicationDbContext.SaveChangesAsync();
+        }
+
+        public async Task LeaveDisApproved(int id)
+        {
+            _applicationDbContext.leaves.Remove(_applicationDbContext.leaves.FirstOrDefault(m => m.Id == id));
+            await _applicationDbContext.SaveChangesAsync();
         }
 
         public async Task UpdateEmployee(Employees employees, int id)
@@ -87,6 +111,7 @@ namespace EmployeeManagement.Data
                 MaritalStatus = employees.MaritalStatus,
                 Department = employees.Department
             };
+            _applicationDbContext.Update(employees);
             await _applicationDbContext.SaveChangesAsync();
         
         }

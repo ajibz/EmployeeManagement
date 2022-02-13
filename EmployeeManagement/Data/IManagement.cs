@@ -20,5 +20,9 @@ namespace EmployeeManagement.Data
         Task DeleteProject(int id);
         Task<List<Project>> GetAllProjects();
         Task AddLeave(Leave leave);
+        Task<List<Leave>> GetAllLeave();
+        Task<Leave> GetSingleLeave(int id);
+        Task LeaveApproved(Leave leave,int id);
+        Task LeaveDisApproved(int id);
     }
 }
