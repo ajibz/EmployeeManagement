@@ -24,5 +24,8 @@ namespace EmployeeManagement.Data
         Task<Leave> GetSingleLeave(int id);
         Task LeaveApproved(Leave leave,int id);
         Task LeaveDisApproved(int id);
+        Task RegisterUser(RegisterModel registerModel);
+        Task LoginUser(LoginModel loginModel);
+        Task LogOutUser();
     }
 }

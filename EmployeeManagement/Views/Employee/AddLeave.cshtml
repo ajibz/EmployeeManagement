@@ -5,26 +5,26 @@
     <div style="width:400px;background-color:cadetblue;padding:40px">
 
 
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="@Model.leave.Reason">Reason :</label>
-            <input asp-for="@Model.leave.Reason" />
+            <input asp-for="@Model.leave.Reason" class="form-control" />
         </div>
 
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="@Model.leave.FromDate">Start Date:</label>
-            <input asp-for="@Model.leave.FromDate" />
+            <input asp-for="@Model.leave.FromDate" class="form-control" />
         </div>
 
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="@Model.leave.ToDate">End Date:</label>
-            <input asp-for="@Model.leave.ToDate" />
+            <input asp-for="@Model.leave.ToDate" class="form-control" />
         </div>
 
 
 
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="@Model.leave.EmployeeName">Employee Name:</label>
-            <select asp-for="@Model.leave.EmployeeName">
+            <select asp-for="@Model.leave.EmployeeName" class="form-control">
                 @foreach (var item in Model.employees)
                 {
                     <option>@item.EmployeeName</option>
@@ -33,8 +33,8 @@
         </div>
 
 
-        <div>
-            <input type="submit" value="Apply" />
+        <div class="form-group">
+            <input type="submit" value="Apply" class="form-control"/>
         </div>
 
     </div>

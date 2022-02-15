@@ -1,5 +1,7 @@
 ﻿using EmployeeManagement.Data;
 using EmployeeManagement.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,15 @@ namespace EmployeeManagement.Controllers
     public class Employee : Controller
     {
         private readonly IManagement _management;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public Employee(IManagement management)
+        public Employee(IManagement management,UserManager<ApplicationUser> userManager,RoleManager<IdentityRole> roleManager)
+
         {
             this._management = management;
+            this._userManager = userManager;
+            this._roleManager = roleManager;
         }
         [HttpGet]
         public IActionResult AddEmployee()
@@ -27,6 +34,10 @@ namespace EmployeeManagement.Controllers
         {
             if (ModelState.IsValid)
             {
+                ApplicationUser applicationUser = new ApplicationUser { Email = Request.Form["Email"],UserName=Request.Form["Email"]};
+                await _userManager.CreateAsync(applicationUser, Request.Form["Password"]);
+                await _userManager.AddToRoleAsync(applicationUser, "Employee");
+
                 await _management.AddEmployee(employee);
                 return RedirectToAction("Index","Home");
 
@@ -115,6 +126,7 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> AddLeave()
         {
             ViewModel viewModel = new ViewModel();

@@ -3,44 +3,54 @@
 
 <form method="post" asp-action="AddEmployee" asp-controller="Employee">
     <div style="width:400px;background-color:cadetblue;padding:40px">
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="EmployeeName">Employee Name:</label>
-            <input asp-for="EmployeeName" />
+            <input asp-for="EmployeeName"  class="form-control"/>
         </div>
 
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="Department">Department:</label>
-            <select asp-for="Department">
+            <select asp-for="Department" class="form-control">
                 <option>Marketing</option>
                 <option>IT</option>
                 <option>Finance</option>
                 <option>Catering</option>
             </select>
         </div>
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="Age">Age:</label>
-            <input asp-for="Age" />
+            <input asp-for="Age" class="form-control" />
         </div>
 
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="Sex">Sex:</label>
-            <select asp-for="Sex">
+            <select asp-for="Sex" class="form-control">
                 <option>Male</option>
                 <option>Female</option>
             </select>
         </div>
 
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="Salary">Salary:</label>
-            <input asp-for="Salary" />
+            <input asp-for="Salary" class="form-control" />
         </div>
-        <div style="display:flex;justify-content:space-between">
+        <div style="display:flex;justify-content:space-between" class="form-group">
             <label asp-for="MaritalStatus">Marital Status:</label>
-            <select asp-for="MaritalStatus">
+            <select asp-for="MaritalStatus" class="form-control">
                 <option>Married</option>
                 <option>Single</option>
             </select>
         </div>
+        <div style="display:flex;justify-content:space-between" class="form-group">
+            <label for=" email">Email:</label>
+            <input id="email" type="email" name="Email" class="form-control"/>
+        </div>
+
+        <div style="display:flex;justify-content:space-between" class="form-group">
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="Password" class="form-control"/>
+        </div>
+
         <div>
             <input type="submit" value="Add Employee" />
         </div>
